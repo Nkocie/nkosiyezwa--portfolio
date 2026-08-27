@@ -28,12 +28,88 @@ export function Hero() {
             >
               <span className="size-1.5 rounded-full bg-primary animate-diagram-pulse" aria-hidden="true" />
               <MapPin className="size-3" aria-hidden="true" />
-              {profile.location}
+              <span>{profile.location}</span>
             </Reveal>
 
             <Reveal delay={30} className="shrink-0">
-              <div className="relative size-24 sm:size-28 lg:size-32 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-xl shadow-primary/10">
+              <div className="relative size-24 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-xl shadow-primary/10 sm:size-28 lg:size-32">
                 <Image
+                  src="/profile.jpg"
+                  alt={profile.name}
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={60}>
+            <p className="mt-6 font-mono text-sm tracking-wider uppercase text-primary">
+              {profile.role}
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              {profile.name}
+            </h1>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <p className="mt-6 max-w-xl text-lg font-medium text-pretty text-foreground/90 sm:text-xl">
+              {profile.heroHeadline}
+            </p>
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-pretty text-muted-foreground">
+              {profile.heroSupporting}
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-pretty text-muted-foreground">
+              {profile.heroParagraph}
+            </p>
+          </Reveal>
+
+          <Reveal delay={180} className="mt-8 flex flex-wrap items-center gap-3">
+            <Button size="lg" asChild>
+              <a href="#projects">
+                View Featured Work <ArrowDown className="ml-2 size-4" />
+              </a>
+            </Button>
+            
+            <Button size="lg" variant="outline" asChild>
+              <a href={profile.cvPath} download>
+                <Download className="mr-2 size-4" />
+                Download CV
+              </a>
+            </Button>
+
+            <Button size="lg" variant="ghost" asChild>
+              <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                <GithubIcon className="mr-2 size-4" />
+                GitHub
+              </a>
+            </Button>
+
+            <Button size="lg" variant="ghost" asChild>
+              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                <LinkedinIcon className="mr-2 size-4" />
+                LinkedIn
+              </a>
+            </Button>
+          </Reveal>
+        </div>
+
+        <Reveal delay={140} className="relative">
+          <div className="relative rounded-2xl border border-border bg-card/50 p-4 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-5">
+            <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="ml-2 font-mono text-xs text-muted-foreground">request_flow.log</span>
+            </div>
+            <SystemDiagram nodes={heroNodes} caption="Illustrative request flow" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
                   src={profile.avatar || "/profile.jpg"}
                   alt={profile.name}
                   fill

@@ -19,116 +19,166 @@ export function Hero() {
       <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40 lg:pb-24">
-        {/* Profile photo: intentionally anchored to the top-right of the hero. */}
-        <Reveal
-          delay={30}
-          className="pointer-events-none absolute right-4 top-6 z-10 sm:right-6 sm:top-5 lg:right-8 lg:top-8"
-        >
-          <div className="profile-float relative size-48 sm:size-56 lg:size-60">
-            <div className="profile-glow absolute inset-0 rounded-[2rem] bg-primary/20 blur-2xl" aria-hidden="true" />
-            <div className="profile-orbit absolute -inset-2 rounded-[2.25rem] border border-primary/25" aria-hidden="true" />
-            <div
-              className="profile-orbit-reverse absolute -inset-4 rounded-[2.75rem] border border-dashed border-primary/10"
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 overflow-hidden rounded-[2rem] border-2 border-primary/60 bg-card shadow-2xl shadow-primary/20 ring-1 ring-primary/20">
-              <Image
-                src="/profile.jpg"
-                alt={profile.name}
-                fill
-                sizes="(max-width: 639px) 192px, (max-width: 1023px) 224px, 240px"
-                className="object-cover object-top"
-                priority
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/25 via-transparent to-primary/10" />
-              <div className="profile-shine pointer-events-none absolute -inset-y-10 -left-1/2 w-1/3 rotate-12 bg-white/10 blur-md" aria-hidden="true" />
-              <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full border border-primary/25 bg-background/75 px-3 py-1.5 font-mono text-[10px] tracking-[0.16em] text-primary backdrop-blur-md">
-                <span className="size-1.5 rounded-full bg-primary animate-diagram-pulse" aria-hidden="true" />
-                SOFTWARE ENGINEER
-              </div>
-            </div>
-            <span
-              className="absolute -right-1 top-8 size-3 rounded-full border-2 border-background bg-primary shadow-lg shadow-primary/50 animate-diagram-pulse"
-              aria-hidden="true"
-            />
-          </div>
-        </Reveal>
-
-        <div className="relative grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          <div className="pt-44 sm:pt-48 lg:pt-0">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-32 pb-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:px-8 lg:pt-40 lg:pb-24">
+        <div>
+          {/* Header Row: Location Tag & Top-Right Profile Picture */}
+          <div className="flex items-start justify-between gap-4">
             <Reveal
               as="div"
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground backdrop-blur-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground backdrop-blur-sm"
             >
               <span className="size-1.5 rounded-full bg-primary animate-diagram-pulse" aria-hidden="true" />
               <MapPin className="size-3" aria-hidden="true" />
-              <span>{profile.location}</span>
+              {profile.location}
             </Reveal>
 
-            <Reveal delay={60}>
-              <p className="mt-6 font-mono text-sm tracking-wider uppercase text-primary">
-                {profile.role}
-              </p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                {profile.name}
-              </h1>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <p className="mt-6 max-w-xl text-lg font-medium text-pretty text-foreground/90 sm:text-xl">
-                {profile.heroHeadline}
-              </p>
-              <p className="mt-3 max-w-xl text-base leading-relaxed text-pretty text-muted-foreground">
-                {profile.heroSupporting}
-              </p>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-pretty text-muted-foreground">
-                {profile.heroParagraph}
-              </p>
-            </Reveal>
-
-            <Reveal delay={180} className="mt-8 flex flex-wrap items-center gap-3">
-              <Button size="lg" asChild>
-                <a href="#projects">
-                  View Featured Work <ArrowDown className="ml-2 size-4" />
-                </a>
-              </Button>
-
-              <Button size="lg" variant="outline" asChild>
-                <a href={profile.cvPath} download>
-                  <Download className="mr-2 size-4" />
-                  Download CV
-                </a>
-              </Button>
-
-              <Button size="lg" variant="ghost" asChild>
-                <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-                  <GithubIcon className="mr-2 size-4" />
-                  GitHub
-                </a>
-              </Button>
-
-              <Button size="lg" variant="ghost" asChild>
-                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-                  <LinkedinIcon className="mr-2 size-4" />
-                  LinkedIn
-                </a>
-              </Button>
+            {/* Profile Picture */}
+            <Reveal delay={30} className="shrink-0">
+              <div className="relative size-24 sm:size-28 lg:size-32 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-xl shadow-primary/10">
+                <Image
+                  src={profile.avatar || "/profile.jpg"}
+                  alt={profile.name}
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
             </Reveal>
           </div>
 
-          <Reveal delay={140} className="relative">
-            <div className="relative rounded-2xl border border-border bg-card/50 p-4 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-5">
-              <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
-                <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
-                <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
-                <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
-                <span className="ml-2 font-mono text-xs text-muted-foreground">request_flow.log</span>
-              </div>
-              <SystemDiagram nodes={heroNodes} caption="Illustrative request flow" />
-            </div>
+          <Reveal delay={60}>
+            <p className="mt-6 font-mono text-sm tracking-wider text-primary uppercase">
+              {profile.role}
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              {profile.name}
+            </h1>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <p className="mt-6 max-w-xl text-lg font-medium text-foreground/90 text-pretty sm:text-xl">
+              {profile.heroHeadline}
+            </p>
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground text-pretty">
+              {profile.heroSupporting}
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground text-pretty">
+              {profile.heroParagraph}
+            </p>
+          </Reveal>
+
+          <Reveal delay={180} className="mt-8 flex flex-wrap items-center gap-3">
+            <Button size="lg" render={<a href="#projects">View Featured Work<ArrowDown /></a>} />
+            <Button
+              size="lg"
+              variant="outline"
+              render={
+                <a href={profile.cvPath} download>
+                  <Download />
+                  Download CV
+                </a>
+              }
+            />
+            <Button
+              size="lg"
+              variant="ghost"
+              render={
+                <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                  <GithubIcon />
+                  GitHub
+                </a>
+              }
+            />
+            <Button
+              size="lg"
+              variant="ghost"
+              render={
+                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                  <LinkedinIcon />
+                  LinkedIn
+                </a>
+              }
+            />
           </Reveal>
         </div>
+
+        <Reveal delay={140} className="relative">
+          <div className="relative rounded-2xl border border-border bg-card/50 p-4 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-5">
+            <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="ml-2 font-mono text-xs text-muted-foreground">request_flow.log</span>
+            </div>
+            <SystemDiagram nodes={heroNodes} caption="Illustrative request flow" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+              {profile.name}
+            </h1>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <p className="mt-6 max-w-xl text-lg font-medium text-foreground/90 text-pretty sm:text-xl">
+              {profile.heroHeadline}
+            </p>
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground text-pretty">
+              {profile.heroSupporting}
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground text-pretty">
+              {profile.heroParagraph}
+            </p>
+          </Reveal>
+
+          <Reveal delay={180} className="mt-8 flex flex-wrap items-center gap-3">
+            <Button size="lg" render={<a href="#projects">View Featured Work<ArrowDown /></a>} />
+            <Button
+              size="lg"
+              variant="outline"
+              render={
+                <a href={profile.cvPath} download>
+                  <Download />
+                  Download CV
+                </a>
+              }
+            />
+            <Button
+              size="lg"
+              variant="ghost"
+              render={
+                <a href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                  <GithubIcon />
+                  GitHub
+                </a>
+              }
+            />
+            <Button
+              size="lg"
+              variant="ghost"
+              render={
+                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                  <LinkedinIcon />
+                  LinkedIn
+                </a>
+              }
+            />
+          </Reveal>
+        </div>
+
+        <Reveal delay={140} className="relative">
+          <div className="relative rounded-2xl border border-border bg-card/50 p-4 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-5">
+            <div className="mb-4 flex items-center gap-2 border-b border-border pb-3">
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="size-2.5 rounded-full bg-muted-foreground/30" aria-hidden="true" />
+              <span className="ml-2 font-mono text-xs text-muted-foreground">request_flow.log</span>
+            </div>
+            <SystemDiagram nodes={heroNodes} caption="Illustrative request flow" />
+          </div>
+        </Reveal>
       </div>
     </section>
   )

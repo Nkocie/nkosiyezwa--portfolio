@@ -21,22 +21,23 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pt-32 pb-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:px-8 lg:pt-40 lg:pb-24">
         <div>
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
             <Reveal
               as="div"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground backdrop-blur-sm"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground backdrop-blur-sm"
             >
               <span className="size-1.5 rounded-full bg-primary animate-diagram-pulse" aria-hidden="true" />
               <MapPin className="size-3" aria-hidden="true" />
               <span>{profile.location}</span>
             </Reveal>
 
-            <Reveal delay={30} className="shrink-0">
-              <div className="relative size-24 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-xl shadow-primary/10 sm:size-28 lg:size-32">
+            <Reveal delay={30} className="shrink-0 self-center sm:self-start">
+              <div className="relative size-36 overflow-hidden rounded-3xl border-2 border-primary/40 bg-card shadow-2xl shadow-primary/15 ring-1 ring-primary/10 sm:size-40 lg:size-44">
                 <Image
                   src="/profile.jpg"
                   alt={profile.name}
                   fill
+                  sizes="(max-width: 639px) 144px, (max-width: 1023px) 160px, 176px"
                   className="object-cover object-top"
                   priority
                 />

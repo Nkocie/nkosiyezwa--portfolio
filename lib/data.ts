@@ -187,8 +187,7 @@ export const supportingProjects: Project[] = [
     description:
       'A Python application that retrieves real-time weather information for cities in South Africa using the OpenWeatherMap API.',
     tech: ['Python', 'Requests', 'OpenWeatherMap API'],
-    github: null,
-    githubPlaceholder: '[ADD SAWeatherApp GITHUB URL]',
+    github: 'https://github.com/Nkocie/SAWeatherApp',
   },
   {
     id: 'shopping-cart-java',
@@ -197,8 +196,7 @@ export const supportingProjects: Project[] = [
     description:
       'A Java Swing desktop application simulating a small e-commerce store with a product catalog, shopping cart, checkout summary, VAT calculation, discounts and shipping options.',
     tech: ['Java', 'Java Swing'],
-    github: null,
-    githubPlaceholder: '[ADD Shopping Cart GITHUB URL]',
+    github: 'https://github.com/Nkocie/shopping-cart-swing',
   },
 ]
 
